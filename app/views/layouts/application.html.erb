@@ -21,7 +21,7 @@
     <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
       <button class="menu-icon dark" type="button" data-toggle></button>
     </span>
-    <strong><a href="/root_path">Gidget</a></strong>
+    <strong><%= link_to "Gidget", root_path %></strong>
   </div>
   
   <div id="responsive-menu">
@@ -37,20 +37,27 @@
           </ul>
         </li>
         <li><a href="#">Two</a></li>
-        <% if user_signed_in? %>
-          <li><%= link_to current_user.first_name, edit_user_registration_path %></a></li>
-          <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to "Register", new_user_registration_path %></li>
-          <li><%= link_to "Login", new_user_session_path %></li>
-        <% end %>
+        
       </ul>
     </div>
 
     <div class="top-bar-right">
-      <ul class="menu">
-      <li><a href="/users/sign_up">Create Account</a></li>
-      <li><a href="/users/sign_in">Login</a></li>
+        <% if user_signed_in? %>
+            <ul class="dropdown menu" data-dropdown-menu>
+              <li>
+                <%= link_to current_user.first_name, edit_user_registration_path %>
+                  <ul class="menu vertical">
+                    <li><a href="#">One</a></li>
+                    <li><a href="#">Two</a></li>
+                    <li><a href="#">Three</a></li>
+                  </ul>
+              </ul>  
+              </li>
+            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+            <li><%= link_to "Register", new_user_registration_path %></li>
+            <li><%= link_to "Login", new_user_session_path %></li>
+        <% end %>
      </ul>
     </div>
 
