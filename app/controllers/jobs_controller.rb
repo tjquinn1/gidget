@@ -4,7 +4,8 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.all
+    @jobs = current_user.jobs
+
   end
 
   # GET /jobs/1
@@ -25,7 +26,7 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
-    @job = Job.new(job_params[:user_id])
+    @job = Job.new(job_params)
     @job.user = current_user
 
 
@@ -46,11 +47,11 @@ class JobsController < ApplicationController
   # PATCH/PUT /jobs/1
   # PATCH/PUT /jobs/1.json
   def update
-    @status = Status.find(params[:id])
+    @job = Job.find(params[:id])
     respond_to do |format|
       if @job.update(job_params)
         format.html { redirect_to @job, notice: 'Job was successfully updated.' }
-        format.json { render :show, status: :ok, location: @job }
+        format.json { render :show, job: :ok, location: @job }
       else
         format.html { render :edit }
         format.json { render json: @job.errors, status: :unprocessable_entity }
