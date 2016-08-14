@@ -10,6 +10,7 @@ class JobsController < ApplicationController
   # GET /jobs/1
   # GET /jobs/1.json
   def show
+    @jobs = Job.find(params[:id])
   end
 
   # GET /jobs/new
@@ -24,7 +25,8 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
-    @job = Job.new(job_params)
+    @job = Job.new(job_params[:user_id])
+    @job.user = current_user
 
 
 
@@ -44,6 +46,7 @@ class JobsController < ApplicationController
   # PATCH/PUT /jobs/1
   # PATCH/PUT /jobs/1.json
   def update
+    @status = Status.find(params[:id])
     respond_to do |format|
       if @job.update(job_params)
         format.html { redirect_to @job, notice: 'Job was successfully updated.' }
@@ -75,6 +78,6 @@ class JobsController < ApplicationController
 
       
       def job_params
-        params.require(:job).permit(:job_title, :job_description, :job_price)
+        params.require(:job).permit(:job_title, :job_description, :job_price, :user_id)
       end
 end

@@ -1,0 +1,23 @@
+// Place all the styles related to the jobs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.job {
+	border-bottom: solid 1px #CCC;
+	padding: 5px 0;
+}
+
+.job p {
+	margin: 4px 0;
+}
+
+.job.hover {
+	background: #FAFAFA;
+}
+
+.job .admin {
+	display: none;
+}
+
+.job.hover .admin {
+	display: inline;
+}
