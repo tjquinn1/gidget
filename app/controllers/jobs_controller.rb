@@ -4,8 +4,12 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = current_user.jobs
+   
+  end
 
+   def search
+    index
+    render :index
   end
 
   # GET /jobs/1

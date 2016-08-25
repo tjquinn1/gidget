@@ -31,6 +31,8 @@ gem 'devise', '~> 3.5', '>= 3.5.6'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 # pundit
 gem 'pundit', '~> 1.1'
+# Ransack
+gem 'ransack', '~> 1.8', '>= 1.8.2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

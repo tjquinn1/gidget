@@ -21,7 +21,7 @@
     <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
       <button class="menu-icon dark" type="button" data-toggle></button>
     </span>
-    <strong><%= link_to "prac", root_path %></strong>
+    <strong><%= link_to "PRAC", root_path %></strong>
   </div>
   
   <div id="responsive-menu">
@@ -37,8 +37,19 @@
           </ul>
         </li>
         <li><a href="#">Two</a></li>
+
+          <%= search_form_for @q  do |f| %>
+                  <li><%= f.text_field :job_description_cont, class: "radius-left expand", placeholder: "Movie title" %></li>
+                  <div class="large-4 small-3 columns">
+                    <li><%= f.submit "Search", class: "radius-right button"%></li>
+                  </div>
+              <% end %>
         
       </ul>
+
+            
+
+
     </div>
 
     <div class="top-bar-right">
@@ -64,28 +75,16 @@
      </ul>
     </div>
 
-    <div class="top-bar-left">
-      <ul class="menu">
-        <li><input type="search" placeholder="Search"></li>
-        <li><button type="button" class="button">Search</button></li>
-      </ul>
-    </div>
 
+      
     </div>
     </div>
     </div>
 </div>
 
-
-
-
-
-
-
-
-<div class="container">  
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <div class="container">  
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
     <%= yield %>
 

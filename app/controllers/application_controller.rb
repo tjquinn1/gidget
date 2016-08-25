@@ -1,6 +1,17 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+  
+      before_filter :set_search
+
+  def set_search
+     @q = Job.ransack(params[:q])
+   @jobs = @q.result.order("job_description ASC")
+  end
+
+
+
+
   include Pundit
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   protect_from_forgery with: :exception
@@ -11,4 +22,7 @@ class ApplicationController < ActionController::Base
   		flash[:alert] = "Sorry you are not Authorized."
   		redirect_to (request.referrer || root_path)
   	end
+
+
+
 end

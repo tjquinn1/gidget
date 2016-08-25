@@ -7,6 +7,9 @@
 </div>
 
 <%= link_to "Post a New Status", new_job_path, class: "btn btn-success" %>
+
+
+
 <% if @jobs.present? %>
   <% @jobs.each do |job| %>
     <div class="job">
@@ -28,5 +31,7 @@
     </div>
   <% end %>
 <% end %>
+
+
   </div>
 </div>

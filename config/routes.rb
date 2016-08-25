@@ -9,5 +9,11 @@ Rails.application.routes.draw do
 
 	get "/profile" => "profile#profile"
 
+	get 'jobs', to: 'jobs#index'
 
+	resources :jobs do
+	    collection do
+	      match 'search' => 'jobs#index', via: [:get, :post], as: :search
+		end
+	end
 end
