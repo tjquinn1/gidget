@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="small-6 large-centered columns">   
+
+
+
+
+<% if @jobs.present? %>
+  <% @jobs.each do |job| %>
+    <div class="job">
+      <div class="callout secondary">
+          <h5><%= job.job_description %></h5>
+          <p><%= job.job_description %></p>
+          <p>$ <%= job.job_price %></p>
+          <p><%= job.user.profile_name %></p>
+
+          <%= link_to time_ago_in_words(job.created_at) + " ago", job %> 
+        
+        <div class="meta">
+          s
+          <span class="admin">
+            | <%= link_to "Edit", edit_job_path(job) %> | 
+            <%= link_to "Delete", job, method: :delete, data: { confirm: "Are you sure your want to delete this status?"} %>
+          </span>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+
+  </div>
+</div>
